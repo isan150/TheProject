@@ -24,5 +24,38 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState( => _MyHomePageState();)
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  BaseGame game;
+
+  @override
+  void initState() {
+    super.initState();
+
+    game = BaseGame();
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: Appbar(
+        title: Text(widget.title),
+        ),
+        body: game.widget);
+  }
+}
+
+@override Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(widget.title),
+    ),
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+
+        ]),)
+    ))
 }
