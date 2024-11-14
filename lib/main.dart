@@ -1,14 +1,23 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-/*
-void main() {
+/* ORIGINAL CODE
+Future void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Flame.util.fullscreen();
   runApp(MyApp());
 }
 */
 
+/* Trying some new stuff
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Flame.util.fullscreen();
+  runApp(MyApp());
+}
+*/
+
+// Flame instance
 void main() {
   final game = FlameGame();
   runApp(GameWidget(game: game));
@@ -25,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'THE HOME PAGE'),
+      home: MainMenu(),
       );
   }
 }
@@ -62,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 @override Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: Text(widget.title),
+      title: Text(Widget.title),
     ),
     body: Center(
       child: Column(
@@ -70,5 +79,5 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
 
         ]),)
-    ))
+    );
 }
