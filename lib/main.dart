@@ -1,10 +1,22 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
+/*
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.util.fullscreen();
   runApp(MyApp());
+}
+*/
+
+void main() {
+  final game = FlameGame();
+  runApp(GameWidget(game: game));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -37,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     game = BaseGame();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Appbar(
