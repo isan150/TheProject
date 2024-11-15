@@ -46,11 +46,14 @@ class MainMenu extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: ElevatedButton(
                 onPressed: () {
+                  
+                  /* Wahid should implement the settings menu here
+
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const SettingsMenu(),
                     ),
-                  );
+                  );*/
                 },
                 child: const Text('Settings'),
               ),
