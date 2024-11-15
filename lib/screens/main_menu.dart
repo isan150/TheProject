@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// This should be the file that handles the main menu screen.
-
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
 
@@ -10,23 +8,52 @@ class MainMenu extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(padding: const EdgeInsets.symmetric(vertical: 50.0),
-            child: Text('Floppy Bird'),
+            // The title of the game
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 50.0),
+              child: Text(
+                'Floppy Bird',
+                style: TextStyle(
+                  fontSize: 50.0,
+                  color: Colors.black,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 20.0,
+                      color: Colors.white,
+                      offset: Offset(0, 0),
+                    )
+                  ],
+                ),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                // Navigates to the Gameplay Screen when this is pressed.
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const GamePlay(),
-                  ),
-                );
-              },
-             child: Text('Play'),
-             ),
-            ElevatedButton(onPressed: () {}, 
-            child: Text('Settings'),
+
+            // Play button
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: ElevatedButton(
+                onPressed: () {
+                  // The game should start when the Play button is pressed. (INSERT CODE HERE)
+               
+                },
+                child: const Text('Play'),
+              ),
+            ),
+
+            // Settings button
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsMenu(),
+                    ),
+                  );
+                },
+                child: const Text('Settings'),
+              ),
             ),
           ],
         ),
