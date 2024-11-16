@@ -2,6 +2,10 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'screens/main_menu.dart';
 // Define the Flame game class
+void main() {
+  runApp(const MyApp());
+}
+
 class FloppyBirdGame extends FlameGame {
   @override
   Future<void> onLoad() async {
@@ -15,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Floppy Bird',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -51,13 +56,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: GameWidget(
-        game: game, // Use the FlameGame instance here
-      ),
-    );
-  }
+      body: Column(
+        children: [ 
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.blue,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.green,
+            ))
+        ]));                                         
+    
 }
 
-void main() {
-  runApp(const MyApp());
 }
