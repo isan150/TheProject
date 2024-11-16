@@ -3,26 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'screens/main_menu.dart';
 
-/* ORIGINAL CODE
-Future void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Flame.util.fullscreen();
-  runApp(MyApp());
-}
-*/
-
-/* Trying some new stuff
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Flame.util.fullscreen();
-  runApp(MyApp());
-}
-*/
-
 // Flame instance
 void main() {
   final game = FlameGame();
-  runApp(GameWidget(game: game));
+  runApp(GameWidget(game: game)); // game instance
 }
 
 class MyApp extends StatelessWidget {
