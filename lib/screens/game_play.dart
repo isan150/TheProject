@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
+import '/game/floppy_bird_game.dart';
 
 // This file should handle the actual gameplay screen, where users can play the game.
 

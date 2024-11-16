@@ -1,12 +1,12 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-
 import 'screens/main_menu.dart';
-
-// Flame instance
-void main() {
-  final game = FlameGame();
-  runApp(GameWidget(game: game)); // game instance
+// Define the Flame game class
+class FloppyBirdGame extends FlameGame {
+  @override
+  Future<void> onLoad() async {
+    // Add game setup logic here
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -20,28 +20,29 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainMenu(),
-      );
+      home: const MyHomePage(title: 'Floppy Bird Game'),
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  BaseGame game;
+  late final FlameGame game;
 
   @override
   void initState() {
     super.initState();
 
-    game = BaseGame();
+    // Initialize the game
+    game = FloppyBirdGame();
   }
 
   @override
@@ -49,21 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        ),
-        body: game.widget);
+      ),
+      body: GameWidget(
+        game: game, // Use the FlameGame instance here
+      ),
+    );
   }
 }
 
-@override Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text(Widget.title),
-    ),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-
-        ]),)
-    );
+void main() {
+  runApp(const MyApp());
 }
