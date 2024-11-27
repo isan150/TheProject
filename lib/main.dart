@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'screens/main_menu.dart';
+
 // Define the Flame game class
 void main() {
   runApp(const MyApp());
@@ -53,11 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: [ 
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Column(children: [
           Expanded(
             flex: 2,
             child: Container(
@@ -65,11 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Expanded(
-            child: Container(
-              color: Colors.green,
-            ))
-        ]));                                         
-    
-}
-
+              child: Container(
+            color: Colors.green,
+          ))
+        ]));
+  }
 }
