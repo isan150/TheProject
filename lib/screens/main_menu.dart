@@ -41,6 +41,18 @@ class MainMenu extends StatelessWidget {
               ),
             ),
 
+            // How to Play button
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Display an image when the button is pressed.
+               
+                },
+                child: const Text('How to Play'),
+              ),
+            ),
+
             // Settings button
             SizedBox(
               width: MediaQuery.of(context).size.width / 3,
