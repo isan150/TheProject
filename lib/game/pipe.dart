@@ -5,6 +5,9 @@ class Pipe extends PositionComponent with CollisionCallbacks {
   late SpriteComponent upperPipe;
   late SpriteComponent lowerPipe;
 
+  // Score
+  bool scored = false;
+
   Pipe({required Vector2 position, required Sprite pipeSprite}) {
     size = Vector2(80, 600);
     this.position = position;
@@ -25,12 +28,30 @@ class Pipe extends PositionComponent with CollisionCallbacks {
     add(lowerPipe);
   }
 
+  bool get isTopPipe => null;
+
   @override
   void update(double dt) {
     super.update(dt);
-    position.x -= 200 * dt; 
+    position.x -= 200 * dt;
+
+    // check if the bird has passed this pipe
+    if (!scored && position.x + size.x <gameRef.bird.position.x) {
+      scored = true;
+
+      // only increase the score by passing the top pipe
+      if (isTopPipe) {
+        gameRef.incrementScore();
+      }
+    }
     if (position.x < -size.x) {
       removeFromParent(); 
     }
   }
+}
+
+mixin gameRef {
+  var bird;
+
+  static void incrementScore() {}
 }

@@ -1,3 +1,4 @@
+import 'package:flappy_bird_clone/game/score.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
@@ -11,7 +12,8 @@ class FloppyBirdGame extends FlameGame with HasCollisionDetection, TapDetector {
   late SpriteComponent bird;
   late double birdVelocity;
   late bool isGameOver;
-  late Sprite pipeSprite; 
+  late Sprite pipeSprite;
+  late ScoreText scoreText;
 
   double timeSinceLastPipe = 0.0;
 
@@ -28,6 +30,20 @@ class FloppyBirdGame extends FlameGame with HasCollisionDetection, TapDetector {
     isGameOver = false;
 
     add(bird);
+
+    // load scores
+    scoreText = ScoreText();
+    add(scoreText);
+  }
+
+
+
+
+  // Score
+
+  int score = 0;
+  void incrementScore(){
+    score += 1;
   }
    
   @override
