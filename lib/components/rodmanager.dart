@@ -1,8 +1,9 @@
 import 'dart:math';
 import 'package:flame/components.dart';
+import '../game/constants.dart';
+import '../game/game.dart';
 import 'rod.dart';
-import '../constants.dart';
-import '../game.dart';
+
 
 class Rodmanager extends Component with HasGameRef<Moonrun>{
 

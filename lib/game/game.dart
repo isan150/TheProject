@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flappy_bird_clone/components/astronaut.dart';
 import 'package:flutter/material.dart';
-import 'components/astronaut.dart';
-import 'components/background.dart';
-import 'components/rod.dart';
-import 'components/rodmanager.dart';
+import '../components/background.dart';
+import '../components/floor.dart';
+import '../components/rod.dart';
+import '../components/rodmanager.dart';
 import 'score.dart';
 import 'constants.dart';
-import 'components/floor.dart';
+
 
 
 class Moonrun extends FlameGame with TapDetector, HasCollisionDetection{

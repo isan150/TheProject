@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import '../constants.dart';
-import '../game.dart';
+
+import '../game/constants.dart';
+import '../game/game.dart';
 
 class Rod extends SpriteComponent with CollisionCallbacks, HasGameRef<Moonrun> {
 
