@@ -35,9 +35,13 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
-    - assets/music/
-    - assets/sfx/
+   - assets/images/astro.png
+   - assets/images/background.png
+   - assets/images/roddown.png
+   - assets/images/rodup.png
+   - assets/images/floor.png
+   - assets/music/
+   - assets/sfx/
 
   fonts:
     - family: Press Start 2P
