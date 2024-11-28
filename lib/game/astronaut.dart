@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:hellrun/constants.dart';
-import 'package:hellrun/game.dart';
+import 'constants.dart';
+import 'game.dart';
 
 import 'floor.dart';
 import 'rod.dart';

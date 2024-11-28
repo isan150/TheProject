@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:hellrun/constants.dart';
+import 'constants.dart';
 
-import '../game.dart';
+import 'game.dart';
 
 class Floor extends SpriteComponent with HasGameRef<Moonrun>, CollisionCallbacks {
 
