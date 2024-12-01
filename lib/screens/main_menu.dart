@@ -49,13 +49,19 @@ class MainMenu extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: ElevatedButton(
                 onPressed: () {
-                  // Display an image when the button is pressed.
-                 @override
-                Future<void> onLoad() async {
+                // Display an image when the button is pressed.
+                // Through the use of a Scaffold...not sure if this is the best way yet.
+                
+                @override
+                Widget build(BuildContext context) {
 
-                final htpImage = Image.asset('assets/images/htp.png'
-                    );
-                  }  
+                  return Scaffold(
+                    body: Center(
+                      child: Image.asset('assets/images/htp.png'),
+                    )
+                  );
+
+                  };
                 },
                 child: const Text('How to Play'),
               ),
