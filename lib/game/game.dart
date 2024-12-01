@@ -69,7 +69,7 @@ builder: (context) => AlertDialog(
     TextButton(onPressed: (){
       Navigator.pop(context);
       resetGame();
-    }, child: const Text("restart"),)
+    }, child: const Text("Restart"),)
   ],),);
 
 

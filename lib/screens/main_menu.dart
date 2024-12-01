@@ -14,7 +14,7 @@ class MainMenu extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Text(
-                'Floppy Bird',
+                'MOON JUMP',
                 style: TextStyle(
                   fontSize: 50.0,
                   color: Colors.black,
