@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flame/events.dart';
+import 'package:flame/game.dart';
+import 'package:flame/cache.dart';
 
 class MainMenu extends StatelessWidget {
   const MainMenu({super.key});
@@ -47,7 +50,12 @@ class MainMenu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Display an image when the button is pressed.
-               
+                 @override
+                Future<void> onLoad() async {
+
+                final htpImage = Image.asset('assets/images/htp.png'
+                    );
+                  }  
                 },
                 child: const Text('How to Play'),
               ),
@@ -76,4 +84,3 @@ class MainMenu extends StatelessWidget {
     );
   }
 }
-
