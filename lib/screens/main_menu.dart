@@ -1,13 +1,23 @@
+import 'package:flappy_bird_clone/game/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/cache.dart';
 
 class MainMenu extends StatelessWidget {
-  const MainMenu({super.key});
+  final Moonrun game;
+  
+  // Id for the main menu screen used for other places
+  static const String id = 'mainMenu';
+
+  const MainMenu({super.key, required this.game,});
 
   @override
   Widget build(BuildContext context) {
+
+    // Make sure the game is paused when this loads
+    game.pauseEngine();
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -38,6 +48,11 @@ class MainMenu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // The game should start when the Play button is pressed. (INSERT CODE HERE)
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const (Moonrun),
+                    ),
+                  );
                
                 },
                 child: const Text('Play'),
@@ -61,7 +76,7 @@ class MainMenu extends StatelessWidget {
                     )
                   );
 
-                  };
+                  }
                 },
                 child: const Text('How to Play'),
               ),
