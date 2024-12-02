@@ -80,11 +80,10 @@ void resetGame() {
   astronaut.velocity = 0;
   score = 0;
   isGG = false;
-  children.removeWhere((child) => child is Rod);
-  //children.whereType<Rod>().forEach(action: (Rod rod) => rod.removeFromParent());
+  children.whereType<Rod>().forEach((Rod rod) => rod.removeFromParent());
   resumeEngine();
-  
 }
+
 
 
 }
