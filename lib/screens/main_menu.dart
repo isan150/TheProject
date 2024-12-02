@@ -1,21 +1,16 @@
-import 'package:flappy_bird_clone/game/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flame/cache.dart';
+import '../game/game.dart';
 
 class MainMenu extends StatelessWidget {
   final Moonrun game;
-  
-  // Id for the main menu screen used for other places
+
   static const String id = 'mainMenu';
 
-  const MainMenu({super.key, required this.game,});
+  const MainMenu({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
-
-    // Make sure the game is paused when this loads
     game.pauseEngine();
 
     return Scaffold(
@@ -23,7 +18,6 @@ class MainMenu extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // The title of the game
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Text(
@@ -41,61 +35,44 @@ class MainMenu extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Play button
             SizedBox(
               width: MediaQuery.of(context).size.width / 3,
               child: ElevatedButton(
                 onPressed: () {
-                  // The game should start when the Play button is pressed. (INSERT CODE HERE)
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => const (Moonrun),
+                      builder: (context) => GameWidget(game: game),
                     ),
                   );
-               
+                  game.resumeEngine();
                 },
                 child: const Text('Play'),
               ),
             ),
-
-            // How to Play button
             SizedBox(
               width: MediaQuery.of(context).size.width / 3,
               child: ElevatedButton(
                 onPressed: () {
-                // Display an image when the button is pressed.
-                // Through the use of a Scaffold...not sure if this is the best way yet.
-                
-                @override
-                Widget build(BuildContext context) {
-
-                  return Scaffold(
-                    body: Center(
-                      child: Image.asset('assets/images/htp.png'),
-                    )
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      content: Image.asset('assets/images/htp.png'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('Close'),
+                        ),
+                      ],
+                    ),
                   );
-
-                  }
                 },
                 child: const Text('How to Play'),
               ),
             ),
-
-            // Settings button
             SizedBox(
               width: MediaQuery.of(context).size.width / 3,
               child: ElevatedButton(
-                onPressed: () {
-                  
-                  /* Wahid should implement the settings menu here
-
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsMenu(),
-                    ),
-                  );*/
-                },
+                onPressed: () {},
                 child: const Text('Settings'),
               ),
             ),
