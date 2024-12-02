@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: GameWidget(game: Moonrun()),
+      initialRoute: '/main_menu.dart'
     );
   }
 }
