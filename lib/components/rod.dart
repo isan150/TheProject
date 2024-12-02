@@ -29,6 +29,12 @@ FutureOr<void> onLoad() async{
 
   if (!scores && position.x + size.x < gameRef.astronaut .position.x){
     scores = true;
+
+  if (isrodUP){
+    gameRef.updateScore();
+  }  
+ 
+
   }
   if (position.x + size.x <= 0)
   {

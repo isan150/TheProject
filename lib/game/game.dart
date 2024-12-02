@@ -23,7 +23,8 @@ class Moonrun extends FlameGame with TapDetector, HasCollisionDetection{
 @override
   FutureOr<void> onLoad() {
   
-  
+
+
 background = Background(size);
 add(background);
 
