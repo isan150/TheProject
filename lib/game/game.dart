@@ -62,16 +62,53 @@ void gameOver() {
   isGG = true;
   pauseEngine();
 
-showDialog(context: buildContext!, 
-builder: (context) => AlertDialog(
-  title: const Text("GG"),
-  content: Text("HIGH SCORE: $score"),
-  actions: [
-    TextButton(onPressed: (){
-      Navigator.pop(context);
-      resetGame();
-    }, child: const Text("Restart"),)
-  ],),);
+showDialog(
+  context: buildContext!,
+  barrierDismissible: false,
+  builder: (context) => AlertDialog(
+    title: const Text(
+  "GOOD TRY JUMPER!!!",
+  style: TextStyle(
+    fontSize: 28.0, 
+    fontWeight: FontWeight.bold, 
+    color: Color.fromARGB(255, 80, 3, 76), 
+    fontFamily: 'Lobster', 
+    shadows: [
+      Shadow(
+        blurRadius: 10.0,
+        color: Color.fromARGB(255, 243, 115, 158), 
+        offset: Offset(2, 2),
+      ),
+    ],
+  ),
+),
+
+    content: Text("HIGH SCORE: $score"),
+    backgroundColor: const Color.fromARGB(255, 243, 115, 158),
+    actions: [
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+          resetGame();
+        },
+        style: TextButton.styleFrom(
+          foregroundColor: const Color.fromARGB(255, 80, 3, 76), 
+        ),
+        child: const Text("GO AGAIN"),
+      ),
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+          Navigator.pushNamed(context, '/');
+        },
+        style: TextButton.styleFrom(
+          foregroundColor: const Color.fromARGB(255, 80, 3, 76), 
+        ),
+        child: const Text("MAIN MENU"),
+      ),
+    ],
+  ),
+);
 
 
 }

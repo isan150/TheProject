@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'game/game.dart';
 import 'screens/main_menu.dart';
+import 'screens/settings.dart'; 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
   ]);
   runApp(const MyApp());
 }
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => MainMenu(game: Moonrun()), 
-        '/game': (context) => GameWidget(game: Moonrun()), 
+        '/': (context) => MainMenu(game: Moonrun()),
+        '/game': (context) => GameWidget(game: Moonrun()),
+       // '/settings': (context) => const settings(), 
       },
     );
   }
 }
- 

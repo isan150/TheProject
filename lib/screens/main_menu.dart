@@ -14,68 +14,85 @@ class MainMenu extends StatelessWidget {
     game.pauseEngine();
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 50.0),
-              child: Text(
-                'MOON JUMP',
-                style: TextStyle(
-                  fontSize: 50.0,
-                  color: Colors.black,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 20.0,
-                      color: Colors.white,
-                      offset: Offset(0, 0),
-                    )
-                  ],
+      backgroundColor: const Color.fromARGB(255, 243, 115, 158),
+body: Center(
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Padding(
+        padding: EdgeInsets.symmetric(vertical: 50.0),
+        child: Text(
+          'MOON JUMP',
+          style: TextStyle(
+            fontSize: 75.0, 
+            fontWeight: FontWeight.bold, 
+            fontFamily: 'Orbitron', 
+            color: Color.fromARGB(255, 80, 3, 76),
+            shadows: [
+              Shadow(
+                blurRadius: 20.0,
+                color: Color.fromARGB(255, 243, 29, 197),
+              ),
+            ],
                 ),
               ),
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => GameWidget(game: game),
-                    ),
-                  );
-                  game.resumeEngine();
-                },
-                child: const Text('Play'),
-              ),
+  width: MediaQuery.of(context).size.width / 3,
+  child: ElevatedButton(
+    onPressed: () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => GameWidget(game: game),
+        ),
+      );
+      game.resumeEngine();
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 80, 3, 76), 
+      foregroundColor: const Color.fromARGB(255, 243, 115, 158), 
+    ),
+    child: const Text('PLAY'),
+  ),
+),
+SizedBox(
+  width: MediaQuery.of(context).size.width / 3,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          content: Image.asset('assets/images/htp.png'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('CLOSE'),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
-              child: ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      content: Image.asset('assets/images/htp.png'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Close'),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                child: const Text('How to Play'),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Settings'),
-              ),
-            ),
+          ],
+        ),
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 80, 3, 76), 
+      foregroundColor: const Color.fromARGB(255, 243, 115, 158), 
+    ),
+    child: const Text('INSTRUCTIONS'),
+  ),
+),
+SizedBox(
+  width: MediaQuery.of(context).size.width / 3,
+  child: ElevatedButton(
+    onPressed: () {
+      Navigator.pushNamed(context, '/settings');
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 80, 3, 76), 
+      foregroundColor: const Color.fromARGB(255, 243, 115, 158), 
+    ),
+    child: const Text('SETTINGS'),
+  ),
+),
+
           ],
         ),
       ),
