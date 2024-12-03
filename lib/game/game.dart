@@ -12,116 +12,123 @@ import 'constants.dart';
 
 
 
-class Moonrun extends FlameGame with TapDetector, HasCollisionDetection{
+enum DifficultyLevel { easy, medium, hard }
 
+class Moonrun extends FlameGame with TapDetector, HasCollisionDetection {
   late Astronaut astronaut;
-  late Background background; 
-  late Floor floor; 
+  late Background background;
+  late Floor floor;
   late Rodmanager rodmanager;
-  late Scoretext scoretext; 
+  late Scoretext scoretext;
 
-@override
+  DifficultyLevel difficultyLevel = DifficultyLevel.medium;
+
+  @override
   FutureOr<void> onLoad() {
-  
+    background = Background(size);
+    add(background);
 
+    floor = Floor();
+    add(floor);
 
-background = Background(size);
-add(background);
+    rodmanager = Rodmanager();
+    add(rodmanager);
 
-floor = Floor();
-add(floor);
+    astronaut = Astronaut();
+    add(astronaut);
 
-rodmanager = Rodmanager(); 
-add(rodmanager);
-
-astronaut = Astronaut();
-add(astronaut);
-
-scoretext = Scoretext();
-add(scoretext);
-}
-
-
+    scoretext = Scoretext();
+    add(scoretext);
+  }
 
   @override
   void onTap() {
     astronaut.leap();
   }
 
-int score = 0; 
-void updateScore() {
-score += 1;
-}
+  int score = 0;
+  void updateScore() {
+    score += 1;
+  }
 
+  bool isGG = false;
 
-bool isGG = false;
+  void gameOver() {
+    if (isGG) return;
 
-void gameOver() {
-  if (isGG) return;
+    isGG = true;
+    pauseEngine();
 
-  isGG = true;
-  pauseEngine();
-
-showDialog(
-  context: buildContext!,
-  barrierDismissible: false,
-  builder: (context) => AlertDialog(
-    title: const Text(
-  "GOOD TRY JUMPER!!!",
-  style: TextStyle(
-    fontSize: 28.0, 
-    fontWeight: FontWeight.bold, 
-    color: Color.fromARGB(255, 80, 3, 76), 
-    fontFamily: 'Lobster', 
-    shadows: [
-      Shadow(
-        blurRadius: 10.0,
-        color: Color.fromARGB(255, 243, 115, 158), 
-        offset: Offset(2, 2),
-      ),
-    ],
-  ),
-),
-
-    content: Text("HIGH SCORE: $score"),
-    backgroundColor: const Color.fromARGB(255, 243, 115, 158),
-    actions: [
-      TextButton(
-        onPressed: () {
-          Navigator.pop(context);
-          resetGame();
-        },
-        style: TextButton.styleFrom(
-          foregroundColor: const Color.fromARGB(255, 80, 3, 76), 
+    showDialog(
+      context: buildContext!,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          "GOOD TRY JUMPER!!!",
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 80, 3, 76),
+            fontFamily: 'Lobster',
+            shadows: [
+              Shadow(
+                blurRadius: 10.0,
+                color: Color.fromARGB(255, 243, 115, 158),
+                offset: Offset(2, 2),
+              ),
+            ],
+          ),
         ),
-        child: const Text("GO AGAIN"),
+        content: Text("HIGH SCORE: $score"),
+        backgroundColor: const Color.fromARGB(255, 243, 115, 158),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Close dialog
+              resetGame();
+            },
+            style: TextButton.styleFrom(
+              foregroundColor: const Color.fromARGB(255, 80, 3, 76),
+            ),
+            child: const Text("GO AGAIN"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Close dialog
+              Navigator.pushNamed(context, '/'); // Navigate to main menu
+            },
+            style: TextButton.styleFrom(
+              foregroundColor: const Color.fromARGB(255, 80, 3, 76),
+            ),
+            child: const Text("MAIN MENU"),
+          ),
+        ],
       ),
-      TextButton(
-        onPressed: () {
-          Navigator.pop(context);
-          Navigator.pushNamed(context, '/');
-        },
-        style: TextButton.styleFrom(
-          foregroundColor: const Color.fromARGB(255, 80, 3, 76), 
-        ),
-        child: const Text("MAIN MENU"),
-      ),
-    ],
-  ),
-);
+    );
+  }
 
 
-}
+  void resetGame() {
+    astronaut.position = Vector2(astroStartX, astroStartY);
+    astronaut.velocity = 0;
+    score = 0;
+    isGG = false;
+    children.whereType<Rod>().forEach((Rod rod) => rod.removeFromParent());
+    resumeEngine();
+  }
 
-void resetGame() {
-  astronaut.position = Vector2(astroStartX, astroStartY);
-  astronaut.velocity = 0;
-  score = 0;
-  isGG = false;
-  children.whereType<Rod>().forEach((Rod rod) => rod.removeFromParent());
-  resumeEngine();
-}
-
-
-
+  void setDifficulty(DifficultyLevel level) {
+    difficultyLevel = level;
+    switch (level) {
+      case DifficultyLevel.easy:
+      // Add easy mode settings (e.g., slower speed)
+        break;
+      case DifficultyLevel.medium:
+      // Add medium mode settings
+        break;
+      case DifficultyLevel.hard:
+      // Add hard mode settings (e.g., faster speed)
+        break;
+    }
+  }
 }

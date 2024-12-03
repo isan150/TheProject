@@ -1,15 +1,9 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'game/game.dart';
-import 'screens/main_menu.dart';
-import 'screens/settings.dart'; 
+import 'package:flappy_bird_clone/screens/main_menu.dart';
+import 'package:flappy_bird_clone/screens/settings.dart';
+import 'package:flappy_bird_clone/game/game.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
   runApp(const MyApp());
 }
 
@@ -18,13 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Moonrun game = Moonrun();
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'Moon Jump',
+      theme: ThemeData(primarySwatch: Colors.pink),
       initialRoute: '/',
       routes: {
-        '/': (context) => MainMenu(game: Moonrun()),
-        '/game': (context) => GameWidget(game: Moonrun()), 
-       // '/settings': (context) => const settings(), 
+        '/': (context) => MainMenu(game: game), // Register "/" for the main menu
+        '/settings': (context) => Settings(game: game), // Register settings
       },
     );
   }
