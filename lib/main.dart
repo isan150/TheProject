@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MainMenu(game: Moonrun()),
-        '/game': (context) => GameWidget(game: Moonrun()),
+        '/game': (context) => GameWidget(game: Moonrun()), 
        // '/settings': (context) => const settings(), 
       },
     );
