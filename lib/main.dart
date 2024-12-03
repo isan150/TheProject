@@ -6,6 +6,8 @@ import 'screens/main_menu.dart';
 import 'screens/settings.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import 'screens/settings.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -111,6 +113,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: GameWidget(game: Moonrun(), overlayBuilderMap: {
+        'mainMenu': (context, _) => MainMenu(),
+      }),
       home: GameWidget(game: Moonrun(), overlayBuilderMap: {
         'mainMenu': (context, _) => MainMenu(),
       }),

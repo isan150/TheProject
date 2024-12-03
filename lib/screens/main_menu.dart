@@ -11,6 +11,8 @@ class MainMenu extends StatelessWidget {
 
   const MainMenu({super.key, required this.game});
 
+// Make sure the game isn't running when the main menu is up
+
   @override
   Widget build(BuildContext context) {
     game.pauseEngine();
